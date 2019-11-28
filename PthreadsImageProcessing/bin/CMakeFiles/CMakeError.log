@@ -1,0 +1,33 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/b.dvb19gzd/LAB3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_202bc/fast 
+/usr/bin/gmake -f CMakeFiles/cmTC_202bc.dir/build.make CMakeFiles/cmTC_202bc.dir/build
+gmake[1]: Entering directory `/nfshome/store03/users/b.dvb19gzd/LAB3/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_202bc.dir/CheckSymbolExists.c.o
+/apps/compilers/gnu/9.2.0/bin/gcc    -o CMakeFiles/cmTC_202bc.dir/CheckSymbolExists.c.o   -c /home/b.dvb19gzd/LAB3/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_202bc
+/apps/tools/cmake/3.14.3/el7/bin/cmake -E cmake_link_script CMakeFiles/cmTC_202bc.dir/link.txt --verbose=1
+/apps/compilers/gnu/9.2.0/bin/gcc      -rdynamic CMakeFiles/cmTC_202bc.dir/CheckSymbolExists.c.o  -o cmTC_202bc 
+CMakeFiles/cmTC_202bc.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_202bc] Error 1
+gmake[1]: Leaving directory `/nfshome/store03/users/b.dvb19gzd/LAB3/bin/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_202bc/fast] Error 2
+
+File /home/b.dvb19gzd/LAB3/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
